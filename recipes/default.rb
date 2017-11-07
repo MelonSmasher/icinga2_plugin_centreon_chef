@@ -7,17 +7,14 @@ if %w{rhel debian}.include?(node['platform_family'])
 
   ### Install any packages / tools that we need ###
 
-  # install git
-  package 'git'
-
   # install tools for rhel
   if node['platform_family'] == 'rhel'
-    package %w(perl net-snmp-perl perl-XML-LibXML perl-JSON perl-libwww-perl perl-XML-XPath perl-Net-Telnet perl-Net-DNS perl-DBI perl-DBD-MySQL perl-DBD-Pg)
+    package %w(git perl net-snmp-perl perl-XML-LibXML perl-JSON perl-libwww-perl perl-XML-XPath perl-Net-Telnet perl-Net-DNS perl-DBI perl-DBD-MySQL perl-DBD-Pg)
   end
 
   # install tools for deb
   if node['platform_family'] == 'debian'
-    package %w(perl libsnmp-perl libxml-libxml-perl libjson-perl libwww-perl libxml-xpath-perl libnet-telnet-perl libnet-ntp-perl libnet-dns-perl libdbi-perl libdbd-mysql-perl libdbd-pg-perl)
+    package %w(git perl libsnmp-perl libxml-libxml-perl libjson-perl libwww-perl libxml-xpath-perl libnet-telnet-perl libnet-ntp-perl libnet-dns-perl libdbi-perl libdbd-mysql-perl libdbd-pg-perl)
   end
 
   ### Read attributes and set vars ###
