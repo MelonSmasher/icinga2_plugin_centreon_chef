@@ -33,8 +33,8 @@ if %w{rhel debian}.include?(node['platform_family'])
     link_type                  :symbolic
     mode                       0755
     owner                      'root'
-    target_file                nagios_plugin_source
-    to                         nagios_plugin_destination
+    target_file                nagios_plugin_destination
+    to                         nagios_plugin_source
     action                     :nothing
   end
 
