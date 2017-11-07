@@ -26,16 +26,17 @@ if %w{rhel debian}.include?(node['platform_family'])
   git_tag = node['icinga2_plugin_centreon']['git']['tag']
 
   nagios_plugin_source = File.join(git_repo_path)
-  nagios_plugin_destination = File.join(node['icinga2_plugin_centreon']['nagios']['nagios_plugin_dir'] , 'centreon-plugins')
+  nagios_plugin_destination = File.join(node['icinga2_plugin_centreon']['nagios']['nagios_plugin_dir'], 'centreon-plugins')
 
+  ### link the plugins to nagios/icinga2 ###
   link 'link_plugins' do
-    group                      'root'
-    link_type                  :symbolic
-    mode                       0755
-    owner                      'root'
-    target_file                nagios_plugin_destination
-    to                         nagios_plugin_source
-    action                     :nothing
+    group 'root'
+    link_type :symbolic
+    mode 0755
+    owner 'root'
+    target_file nagios_plugin_destination
+    to nagios_plugin_source
+    action :nothing
   end
 
   ### Clone the repository ###
